@@ -30,6 +30,7 @@ public:
             return head;
         }
        
+       
         count=count-k;
         for(int i =0;i<count;i++) {
             prev=curr;
