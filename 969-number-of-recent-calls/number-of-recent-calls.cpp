@@ -1,23 +1,21 @@
 class RecentCounter {
 public:
-queue<int> q;
+queue<int> a ;
     RecentCounter() {
         
     }
     
     int ping(int t) {
-     
-                    q.push(t);
-
-                            while (q.front() < t - 3000) {
-                                        q.pop();
-                                                }
-
-                                                        return q.size();
-                                                            }
-          
+        int limit=t-3000;
+            a.push(t);
+            while(!a.empty() && a.front()<limit) {
+                a.pop();
+            }
+        
         
     
+    return a.size();}
+
 };
 
 /**
