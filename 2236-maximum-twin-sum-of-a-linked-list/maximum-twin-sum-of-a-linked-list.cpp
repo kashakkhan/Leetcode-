@@ -17,31 +17,33 @@ public:
             count++;
             temp=temp->next;
         }
-        temp=head;
         int middle=count/2;
+        temp=head;
         for(int i =0;i<middle-1;i++) {
             temp=temp->next;
         }
-        ListNode*save=temp->next;
+        ListNode* curr1=temp->next;
         temp->next=NULL;
-
         temp=head;
-        int max=0;
-        ListNode* prev=NULL;
-        while(save!=NULL) {
-            ListNode* curr=save->next;
-            save->next=prev;
-            prev=save;
-            save=curr;
+        ListNode* curr=curr1;
+        ListNode* prev=NULL ;
+        while(curr!=NULL) {
+            ListNode * save=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=save;
         }
-        save=prev;
-        while(temp!=NULL&& save!=NULL) {
-            int sum=temp->val+save->val ;
-            if(sum>max) {
-                max=sum;
+        curr1=prev;
+        curr=curr1;
+        int max_sum=0;
+        while(temp!=NULL &&curr!=NULL ) {
+            int sum = temp->val + curr->val;
+            if(sum>max_sum) {
+                max_sum=sum;
             }
-            save=save->next;
             temp=temp->next;
+            curr=curr->next;
         }
-        return max;}
+        return max_sum;
+    }
 };
